@@ -1,0 +1,57 @@
+import math
+
+class Car:
+   def __init__(self,speed,make,model,year,x,y):
+        self.make=make
+        self.speed=speed
+        self.model=model
+        self.year=year
+        self.x=x
+        self.y=y
+      
+   def accelerate(self,speed_increment):
+      self.speed=self.speed+speed_increment
+
+   def brake(self,speed_decrement):
+         self.speed=self.speed-speed_decrement
+
+   def move(self):
+    self.x=self.x+self.speed*1
+    self.y=self.y+self.speed*1
+
+    def time_to_collision(self,car2):
+      dis_x=abs(self.x-car2.x)
+      dis_y=abs(self.y-car2.y)
+      totdis=math.sqrt((dis_x)*(dis_x)-(dis_y)*(dis_y))
+      time_to_collide=totdis/(self.speed-car2.speed)
+      print(time_to_collide)
+      
+    def detect_collision(self,car2):
+     if self.x==car2.x and self.y==car2.y:
+            return True
+     else:
+            return False
+car1 = Car( 60,"Hyundai", "Creta", 2022, 0, 0)
+car2 = Car( 50,"Maruti", "Alto", 2020, 50, 50)
+
+print(car1.speed,car1.make, car1.model, car1.year,  car1.x, car1.y)
+print(car2.speed,car2.make, car2.model, car2.year,  car2.x, car2.y)
+
+car1.accelerate(10)
+car2.brake(20)
+
+print(car1.speed)
+print(car2.speed)
+
+car1.move()
+car2.move()
+
+print(car1.x, car1.y)
+print(car2.x, car2.y)
+
+
+print(car1.time_to_collision(car2))
+print(car1.detect_collision(car2))
+    
+   
+     
